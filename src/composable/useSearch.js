@@ -7,14 +7,14 @@ import {ref, computed} from 'vue'
 */
 export const useSearch = (items)=>{
     const searchTerm = ref('');
-    const filters = ref('title');
+    const filters = ref(['title']);
     //Treba da e computed za da ne se presmetuvaat elementite pri sekoe renderiranje duri
     // i koga nema nov searchTerm ili filter
     const filteredItems = computed(()=>{
         //za sekoj item
         return items.value.filter(item => {
             //se proveruvaat site aktivni filtri i dovolno e samo za eden filter
-            return filter.value.some(filter => {
+            return filters.value.some((filter) => {
                 //vo sodrzinata od item sto ja filtira da se naogja zborot(searchTerm)
                 return item[filter].toLowerCase().includes(searchTerm.value.toLowerCase());
             });
@@ -22,8 +22,8 @@ export const useSearch = (items)=>{
     });
     return {
         searchTerm,
-        filters,
-        filteredItems
+        filteredItems,
+        filters
         
     };    
 }
