@@ -49,7 +49,7 @@
   </template>
   <script setup>
   import { defineProps, defineEmits, ref, watch } from "vue";
-  import { useSearch } from "../composables/useSearch";
+  import { useSearch } from "../composable/useSearch";
   
   const props = defineProps({
     blogs: {

@@ -1,11 +1,7 @@
-<script setup>
-
-</script>
-
 <template>
-
+  <BlogView />
 </template>
 
-<style scoped>
-
-</style>
+<script setup>
+import BlogView from "./components/BlogView.vue";
+</script>
