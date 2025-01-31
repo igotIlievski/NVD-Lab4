@@ -39,7 +39,8 @@
                   <h4>{{ blog.title }}</h4>
                   <p>{{ blog.description }}</p>
                   </div>
-              </div>            
+              </div>     
+              <button @click="emits('deleteBlog', blog.id)">Remove</button>       
             </article>
           </li>
         </ul>
@@ -65,7 +66,7 @@
     },
   });
   
-  
+  const emits = defineEmits(["deleteBlog"]);
   const blogs = ref(props.blogs);
   
   watch(
