@@ -8,7 +8,10 @@
         <p>{{ error }}</p>
       </div>
       <section v-else>
-        
+        <div>
+        <label for="search">Search:</label>
+        <input type="text" id="search" v-model="searchTerm" />
+      </div>
         <ul>
           <li>
             <article v-for="(blog, i) in filteredBlogs" :key="i">
@@ -60,5 +63,9 @@
     }
   );
   
-  
+  const {
+    searchTerm,
+    filters,
+    filteredItems: filteredBlogs,
+  } = useSearch(blogs);
   </script>
