@@ -12,6 +12,18 @@
         <label for="search">Search:</label>
         <input type="text" id="search" v-model="searchTerm" />
       </div>
+      <fieldset>
+        <div>Filter by: </div>
+        <input type="checkbox" id="title" value="title" v-model="filters" />
+        <label for="title">By Title</label>
+        <input
+          type="checkbox"
+          id="content"
+          value="description"
+          v-model="filters"
+        />
+        <label for="content">By Content</label>
+      </fieldset>
         <ul>
           <li>
             <article v-for="(blog, i) in filteredBlogs" :key="i">
