@@ -8,7 +8,7 @@
         <p>{{ error }}</p>
       </div>
       <section v-else>
-        <div>
+        <div class="search">
         <label for="search">Search:</label>
         <input type="text" id="search" v-model="searchTerm" />
       </div>
@@ -24,16 +24,17 @@
         />
         <label for="content">By Content</label>
       </fieldset>
-        <ul>
+        <ul class="articles-list">
           <li>
             <article v-for="(blog, i) in filteredBlogs" :key="i">
-              <div>
+              <div class="article-item-info">
                   <img
                   v-if="blog.heroImage"
+                  class="thumbnail"
                   :src="`${blog.heroImage.fields.file.url}?fit=scale&w=350&h=196`"
                   />
-                  <div>
-                  <div>
+                  <div class="article-text">
+                  <div class="date">
                       {{ new Date(blog.publishDate).toDateString() }}
                   </div>
                   <h4>{{ blog.title }}</h4>
@@ -82,3 +83,47 @@
     filteredItems: filteredBlogs,
   } = useSearch(blogs);
   </script>
+
+<style scoped>
+.articles-list article{
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  gap: 10px;
+  border: 1px solid gray;
+  align-items: center;
+  margin-block: 20px;
+}
+button {
+    margin-bottom: 10px;
+}
+
+.article-item-info {
+  display: flex;
+  text-align: left;
+  padding-bottom: 15px;
+}
+
+.article-text {
+  padding: 15px 0;
+}
+
+.thumbnail {
+  margin-right: 30px;
+}
+
+.date {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+li {
+    list-style: none;
+}
+
+fieldset {
+    display: flex;
+    gap: 10px;
+    margin-block: 20px;
+}
+</style>
